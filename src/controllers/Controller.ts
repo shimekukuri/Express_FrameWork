@@ -8,19 +8,16 @@ export class Controller {
   constructor(route: string, subControllers: Controller[] = []) {
     this.subControllers = subControllers;
     this.route = route;
-
-    if (subControllers) {
-      for (let x of subControllers) {
-        x.subPath = this.route;
-        if (x.subPath) {
-          x.route = x.subPath + x.route;
-        }
-      }
-      //console.log(this);
-      //console.log(subControllers);
-    }
   }
-  updateRoute() {
-    buildPath(this);
+  updateRoute(path: string = ''): void {
+    console.log(this);
+    if (this.subControllers) {
+      for (let x of this.subControllers) {
+        x.route = this.route + x.route;
+        x.updateRoute();
+      }
+    }
+
+    console.log('sub', this.subControllers);
   }
 }

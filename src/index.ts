@@ -16,9 +16,14 @@ app.listen(3001, () => {
   console.log('listening on port whateer');
 });
 
-const controller1 = new Controller('/');
+const controller1 = new Controller('/1');
 const controller2 = new Controller('/2', [controller1]);
-const controller3 = new Controller('/3', [controller1, controller2]);
+const controller3 = new Controller('/3', [controller2]);
 const controller4 = new Controller('/4', [controller3]);
 
-controller4.updateRoute();
+const c5 = new Controller('/5');
+const c6 = new Controller('/6', [c5]);
+const c7 = new Controller('/7');
+const c8 = new Controller('/8', [c6, c7]);
+
+c8.updateRoute();
