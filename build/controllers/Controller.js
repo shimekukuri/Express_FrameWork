@@ -1,24 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Controller = void 0;
-const buildPath_1 = require("../utils/buildPath");
 class Controller {
     constructor(route, subControllers = []) {
         this.subControllers = subControllers;
         this.route = route;
-        if (subControllers) {
-            for (let x of subControllers) {
-                x.subPath = this.route;
-                if (x.subPath) {
-                    x.route = x.subPath + x.route;
-                }
-            }
-            //console.log(this);
-            //console.log(subControllers);
-        }
     }
-    updateRoute() {
-        (0, buildPath_1.buildPath)(this);
+    updateRoute(path = '') {
+        console.log(this);
+        if (this.subControllers) {
+            for (let x of this.subControllers) {
+                x.route = this.route + x.route;
+                x.updateRoute();
+            }
+        }
+        console.log('sub', this.subControllers);
     }
 }
 exports.Controller = Controller;

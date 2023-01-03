@@ -8,10 +8,11 @@ function buildPath(node) {
     while (stack) {
         currentStack;
         for (let i = 0; i < stack.length; i++) {
-            console.log('main', stack[i].subControllers);
+            console.log('main', stack[0], 'route', stack[0].route);
+            console.log('sub', stack[i].subControllers, 'route', stack[i].route);
             if (stack[i].subControllers) {
                 for (let x of stack[i].subControllers) {
-                    console.log(x);
+                    console.log('sub sub', x, 'route', x.route);
                 }
             }
         }

@@ -1,4 +1,4 @@
-export enum handler {
+export enum handlerEnum {
   get = 'get',
   post = 'post',
   put = 'put',

@@ -5,3 +5,8 @@ export interface validController {
   subControllers?: Controller[];
   subPath?: string;
 }
+
+export interface handlers {
+  subRoute: string;
+  callback: (req: Request, res: Response) => void;
+}
